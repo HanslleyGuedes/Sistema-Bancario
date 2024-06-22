@@ -1,0 +1,57 @@
+print("""
+____________________
+| Escolha uma opção|
+|    [1]Deposito   | 
+|    [2]Saque      |
+|    [3]Extrato    | 
+|    [4]Sair       | 
+|__________________|     
+       """)
+
+
+saldo=0
+numeroSQs=0
+extrato= (" ")
+
+while True:
+    opcao=int(input())
+    if opcao == 1:
+        valorDP=float(input("Depositar: "))
+        
+        if valorDP > 0:
+            saldo += valorDP
+            extrato+= f"Deposito: R$:{valorDP:.2f}\n"
+        
+        else:
+            print("Não foi possivel realizar essa transação, tente novamente!")
+
+
+    elif opcao == 2:
+        valorSQ=float(input("Sacar: "))
+        
+        if numeroSQs < 3:
+        
+            if  valorSQ <= saldo:
+        
+                if valorSQ > 0 and valorSQ <= 500:
+                    saldo -= valorSQ
+                    numeroSQs += 1
+                    extrato += f"Saque:{valorSQ:.2f}\n"
+        
+            else:
+                print("Saldo insuficiente, transação mal sucedida!")
+        
+        else:
+            print("Limite diario de saques atingido!")
+
+    elif opcao == 3:
+        print("_______Extrato_______")
+        print(extrato)
+        print(f"Seu saldo é de R$:{saldo:.2f}")
+        print("_____________________")
+
+    elif opcao == 4:
+        break
+
+    else: 
+        print("Opção invalida, tente novamente!")
